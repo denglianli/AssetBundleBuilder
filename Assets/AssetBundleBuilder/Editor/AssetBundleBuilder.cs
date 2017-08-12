@@ -37,6 +37,10 @@ namespace Developer.AssetBundleBuilder
 
         [Tooltip("Target build platform.")]
         public BuildTarget platform = BuildTarget.Android;
+
+        private const string pathKey = "AssetBundleBuildPath";
+        private const string optionsKey = "AssetBundleBuildOptions";
+        private const string platformKey = "AssetBundleBuildPlatform";
         #endregion
 
         #region Private Method
@@ -44,6 +48,13 @@ namespace Developer.AssetBundleBuilder
         static void ShowEditor()
         {
             DisplayWizard("AssetBundleBuilder", typeof(AssetBundleBuilder), "Build");
+        }
+
+        void OnEnable()
+        {
+            path = EditorPrefs.GetString(pathKey, path);
+            options = (BuildAssetBundleOptions)EditorPrefs.GetInt(optionsKey, (int)options);
+            platform = (BuildTarget)EditorPrefs.GetInt(platformKey, (int)platform);
         }
 
         void OnWizardUpdate()
@@ -56,6 +67,10 @@ namespace Developer.AssetBundleBuilder
 
         void OnWizardCreate()
         {
+            EditorPrefs.SetString(pathKey, path);
+            EditorPrefs.SetInt(optionsKey, (int)options);
+            EditorPrefs.SetInt(platformKey, (int)platform);
+
             if (Directory.Exists(path) == false)
                 Directory.CreateDirectory(path);
             BuildPipeline.BuildAssetBundles(path, options, platform);
