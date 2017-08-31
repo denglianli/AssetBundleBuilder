@@ -4,19 +4,18 @@
   Author: Mogoson   Version: 1.0   Date: 8/4/2017
 ==========================================================================
   [Summeray]
-    This tool can be used to build asset bundle in Unity3D editor.
+    This tool can be used to build asset bundle in Unity editor.
 --------------------------------------------------------------------------
   [Environment]
-    This tool applies to Unity3D 5.0, .Net Framework 3.0 or above version.
+    This tool applies to Unity 5.0, .Net Framework 3.0 or above version.
 --------------------------------------------------------------------------
   [Usage]
     Define the bundles those you want to build by AssetBundle Menu at the
     bottom of the asset Inspector window.
-    Find the menu item "Tool/AssetBundleBuilder" in Unity3D editor's menu
-    bar and click it to open the STEditor window or press combination key
-    Alt+A.
+    Find the menu item "Tool/Asset Bundle Builder" in Unity editor menu
+    bar and click it or press combination key Alt+A to open the editor window.
     Set the "Path","Options" and "Platform" values.
-    Click the "Build" button to start building aseet bundles.
+    Click the "Build" button to start build aseet bundles.
 --------------------------------------------------------------------------
   [Contact]
     If you have any questions, feel free to contact me at mogoson@qq.com.

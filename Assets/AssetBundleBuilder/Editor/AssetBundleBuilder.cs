@@ -23,9 +23,6 @@ namespace Developer.AssetBundleBuilder
     using UnityEditor;
     using UnityEngine;
 
-    /// <summary>
-    /// Editor for build asset bundle.
-    /// </summary>
     public class AssetBundleBuilder : ScriptableWizard
     {
         #region Property and Field
@@ -44,10 +41,10 @@ namespace Developer.AssetBundleBuilder
         #endregion
 
         #region Private Method
-        [MenuItem("Tool/AssetBundleBuilder &A")]
+        [MenuItem("Tool/Asset Bundle Builder &A")]
         static void ShowEditor()
         {
-            DisplayWizard("AssetBundleBuilder", typeof(AssetBundleBuilder), "Build");
+            DisplayWizard("Asset Bundle Builder", typeof(AssetBundleBuilder), "Build");
         }
 
         void OnEnable()
@@ -77,5 +74,5 @@ namespace Developer.AssetBundleBuilder
             AssetDatabase.Refresh();
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}
