@@ -41,7 +41,7 @@ namespace Developer.AssetBundleBuilder
         #endregion
 
         #region Private Method
-        [MenuItem("Tool/Asset Bundle Builder &A")]
+        [MenuItem("Tool/Asset Bundle Builder &B")]
         static void ShowEditor()
         {
             DisplayWizard("Asset Bundle Builder", typeof(AssetBundleBuilder), "Build");
