@@ -1,21 +1,35 @@
 ==========================================================================
-  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
   Name: AssetBundleBuilder
-  Author: Mogoson   Version: 1.0   Date: 8/4/2017
+  Author: Mogoson   Version: 0.1.0   Date: 8/4/2017
 ==========================================================================
-  [Summeray]
-    This tool can be used to build asset bundle in Unity editor.
+  [Summary]
+    Unity plugin for build AssetBundle.
+--------------------------------------------------------------------------
+  [Demand]
+    Config build options and build AssetBundles to target path.
 --------------------------------------------------------------------------
   [Environment]
-    This tool applies to Unity 5.0, .Net Framework 3.0 or above version.
+    Unity 5.0 or above.
+    .Net Framework 3.0 or above.
+--------------------------------------------------------------------------
+  [Achieve]
+    AssetBundleBuilder : Draw extend editor window, config build options
+    and build AssetBundles to target path.
 --------------------------------------------------------------------------
   [Usage]
-    Define the bundles those you want to build by AssetBundle Menu at the
-    bottom of the asset Inspector window.
-    Find the menu item "Tool/Asset Bundle Builder" in Unity editor menu
-    bar and click it or press combination key Alt+A to open the editor window.
-    Set the "Path","Options" and "Platform" values.
-    Click the "Build" button to start build aseet bundles.
+    Assigning Assets to AssetBundles by AssetBundle Menu at the bottom of
+    the Asset Inspector window.
+
+    Find the menu item "Tool/Asset Bundle Builder" in Unity editor menu bar
+    and click it or press key combination Alt+B to open the editor window.
+
+    Config the "Path","Options" and "Platform".
+
+    Click the "Build" button to start build AssetBundles.
+--------------------------------------------------------------------------
+  [Resource]
+    https://github.com/mogoson/AssetBundleBuilder.
 --------------------------------------------------------------------------
   [Contact]
     If you have any questions, feel free to contact me at mogoson@qq.com.

@@ -1,7 +1,7 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: AssetBundleBuilder.cs
- *  Author: Mogoson   Version: 1.0   Date: 8/4/2017
+ *  Author: Mogoson   Version: 0.1.0   Date: 8/4/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,64 +14,101 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     8/4/2017       1.0        Build this file.
+ *     1.     Mogoson      8/4/2017      0.1.0        Create this file.
  *************************************************************************/
 
 namespace Developer.AssetBundleBuilder
 {
-    using System.IO;
+    using System;
     using UnityEditor;
     using UnityEngine;
 
-    public class AssetBundleBuilder : ScriptableWizard
+    public class AssetBundleBuilder : EditorWindow
     {
         #region Property and Field
-        [Tooltip("Path of save asset bundles.")]
-        public string path = "Assets/AssetBundles";
+        private static AssetBundleBuilder instance;
+        private const float rightAlignment = 80;
 
-        [Tooltip("Options of build asset bundles.")]
-        public BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
-
-        [Tooltip("Target build platform.")]
-        public BuildTarget platform = BuildTarget.Android;
+        private string path = "Assets";
+        private BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
+        private BuildTarget platform = BuildTarget.Android;
 
         private const string pathKey = "AssetBundleBuildPath";
         private const string optionsKey = "AssetBundleBuildOptions";
-        private const string platformKey = "AssetBundleBuildPlatform";
+        private const string platformKey = "AssetBundleTargetPlatform";
         #endregion
 
         #region Private Method
         [MenuItem("Tool/Asset Bundle Builder &B")]
-        static void ShowEditor()
+        private static void ShowEditor()
         {
-            DisplayWizard("Asset Bundle Builder", typeof(AssetBundleBuilder), "Build");
+            instance = GetWindow<AssetBundleBuilder>("Asset Bundle");
+            instance.Show();
         }
 
-        void OnEnable()
+        private void OnEnable()
         {
-            path = EditorPrefs.GetString(pathKey, path);
-            options = (BuildAssetBundleOptions)EditorPrefs.GetInt(optionsKey, (int)options);
-            platform = (BuildTarget)EditorPrefs.GetInt(platformKey, (int)platform);
+            GetEditorPreferences();
         }
 
-        void OnWizardUpdate()
+        private void OnGUI()
         {
-            if (path == string.Empty)
-                isValid = false;
-            else
-                isValid = true;
+            EditorGUILayout.BeginVertical("Window");
+
+            EditorGUILayout.BeginHorizontal();
+            path = EditorGUILayout.TextField("Path", path);
+            if (GUILayout.Button("Browse", GUILayout.Width(rightAlignment)))
+                SelectBuildPath();
+            EditorGUILayout.EndHorizontal();
+
+            options = (BuildAssetBundleOptions)EditorGUILayout.EnumPopup("Options", options);
+            platform = (BuildTarget)EditorGUILayout.EnumPopup("Platform", platform);
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.Space();
+            if (GUILayout.Button("Build", GUILayout.Width(rightAlignment)))
+                BuildAssetBundles();
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.EndVertical();
         }
 
-        void OnWizardCreate()
+        private void SelectBuildPath()
+        {
+            var selectPath = EditorUtility.OpenFolderPanel("Select Build Path", "Assets", string.Empty);
+            if (selectPath == string.Empty)
+                return;
+            try { path = selectPath.Substring(selectPath.IndexOf("Assets")); }
+            catch { path = selectPath; }
+        }
+
+        private void BuildAssetBundles()
+        {
+            try
+            {
+                BuildPipeline.BuildAssetBundles(path, options, platform);
+                AssetDatabase.Refresh();
+
+                SetEditorPreferences();
+            }
+            catch (Exception e)
+            {
+                ShowNotification(new GUIContent(e.Message));
+            }
+        }
+
+        private void SetEditorPreferences()
         {
             EditorPrefs.SetString(pathKey, path);
             EditorPrefs.SetInt(optionsKey, (int)options);
             EditorPrefs.SetInt(platformKey, (int)platform);
+        }
 
-            if (Directory.Exists(path) == false)
-                Directory.CreateDirectory(path);
-            BuildPipeline.BuildAssetBundles(path, options, platform);
-            AssetDatabase.Refresh();
+        private void GetEditorPreferences()
+        {
+            path = EditorPrefs.GetString(pathKey, path);
+            options = (BuildAssetBundleOptions)EditorPrefs.GetInt(optionsKey, (int)options);
+            platform = (BuildTarget)EditorPrefs.GetInt(platformKey, (int)platform);
         }
         #endregion
     }
