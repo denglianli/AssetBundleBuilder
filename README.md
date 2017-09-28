@@ -12,7 +12,7 @@
 - .Net Framework 3.0 or above.
 
 ## Achieve
-- AssetBundleBuilder : AssetBundleBuilder : Draw extend editor window, config build options and build AssetBundles to target path.
+- AssetBundleBuilder : Draw extend editor window, config build options and build AssetBundles to target path.
 
 ## Usage
 - Assigning Assets to AssetBundles by AssetBundle Menu at the bottom of the Asset Inspector window.
