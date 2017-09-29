@@ -17,12 +17,12 @@
  *     1.     Mogoson      8/4/2017      0.1.0        Create this file.
  *************************************************************************/
 
+using System;
+using UnityEditor;
+using UnityEngine;
+
 namespace Developer.AssetBundleBuilder
 {
-    using System;
-    using UnityEditor;
-    using UnityEngine;
-
     public class AssetBundleBuilder : EditorWindow
     {
         #region Property and Field
