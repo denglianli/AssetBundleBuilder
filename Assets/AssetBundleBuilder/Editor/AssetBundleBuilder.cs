@@ -27,7 +27,7 @@ namespace Developer.AssetBundleBuilder
     {
         #region Property and Field
         private static AssetBundleBuilder instance;
-        private const float rightAlignment = 80;
+        private const float buttonWidth = 80;
 
         private string path = "Assets";
         private BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
@@ -57,7 +57,7 @@ namespace Developer.AssetBundleBuilder
 
             EditorGUILayout.BeginHorizontal();
             path = EditorGUILayout.TextField("Path", path);
-            if (GUILayout.Button("Browse", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("Browse", GUILayout.Width(buttonWidth)))
                 SelectBuildPath();
             EditorGUILayout.EndHorizontal();
 
@@ -66,7 +66,7 @@ namespace Developer.AssetBundleBuilder
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.Space();
-            if (GUILayout.Button("Build", GUILayout.Width(rightAlignment)))
+            if (GUILayout.Button("Build", GUILayout.Width(buttonWidth)))
                 BuildAssetBundles();
             EditorGUILayout.EndHorizontal();
 
