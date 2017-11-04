@@ -12,6 +12,7 @@
  *************************************************************************/
 
 using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -78,17 +79,22 @@ namespace Developer.AssetBundleBuilder
 
         private void BuildAssetBundles()
         {
-            try
+            if (Directory.Exists(path))
             {
-                BuildPipeline.BuildAssetBundles(path, options, platform);
-                AssetDatabase.Refresh();
+                try
+                {
+                    BuildPipeline.BuildAssetBundles(path, options, platform);
+                    AssetDatabase.Refresh();
 
-                SetEditorPreferences();
+                    SetEditorPreferences();
+                }
+                catch (Exception e)
+                {
+                    ShowNotification(new GUIContent(e.Message));
+                }
             }
-            catch (Exception e)
-            {
-                ShowNotification(new GUIContent(e.Message));
-            }
+            else
+                ShowNotification(new GUIContent("The output path does not exist."));
         }
 
         private void SetEditorPreferences()
