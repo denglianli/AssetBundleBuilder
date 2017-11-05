@@ -13,16 +13,12 @@
 - .Net Framework 3.0 或更高版本。
 
 ## 实现
-- AssetBundleBuilder：绘制扩展编辑器窗口，通过参数配置创建选项，创建所有AssetBundle，保存到目标路径。
+- AssetBundleBuilder：绘制扩展编辑器窗口，通过参数配置创建选项，创建所有AssetBundle，保存到指定目标。
 
-## 使用
-- 使用AssetBundle Menu（选中资源文件时，Unity的Inspector面板底部）将资源分配到AssetBundle。
+## 预览
+- AssetBundle Builder
 
-![AssetBundle Menu](./Attachments/AssetBundleMenu.png)
-
-- 使用AssetBundle Builder创建分配好的AssetBundle。
-
-![AssetBundle Builder](./Attachments/AssetBundleBuilder.png) 
+![AssetBundleBuilder](./Attachments/AssetBundleBuilder.gif) 
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。

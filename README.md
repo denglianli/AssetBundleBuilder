@@ -14,14 +14,10 @@
 ## Achieve
 - AssetBundleBuilder : Draw extend editor window, config build options and build AssetBundles to target path.
 
-## Usage
-- Assigning Assets to AssetBundles by AssetBundle Menu at the bottom of the Asset Inspector window.
+## Preview
+- AssetBundle Builder
 
-![AssetBundle Menu](./Attachments/AssetBundleMenu.png)
-
-- Use the AssetBundle Builder to build AssetBundles.
-
-![AssetBundle Builder](./Attachments/AssetBundleBuilder.png)
+![AssetBundleBuilder](./Attachments/AssetBundleBuilder.gif)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.
