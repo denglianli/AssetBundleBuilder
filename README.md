@@ -17,7 +17,7 @@
 ## Preview
 - AssetBundle Builder
 
-![AssetBundleBuilder](./Attachments/AssetBundleBuilder.gif)
+![AssetBundleBuilder](./Attachments/README_Image/AssetBundleBuilder.gif)
 
 ## Contact
 - If you have any questions, feel free to contact me at mogoson@qq.com.

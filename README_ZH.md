@@ -18,7 +18,7 @@
 ## 预览
 - AssetBundle Builder
 
-![AssetBundleBuilder](./Attachments/AssetBundleBuilder.gif) 
+![AssetBundleBuilder](./Attachments/README_Image/AssetBundleBuilder.gif) 
 
 ## 联系
 - 如果你有任何问题或者建议，欢迎通过mogoson@qq.com联系我。
