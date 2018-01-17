@@ -73,6 +73,7 @@ namespace Developer.AssetBundleBuilder
             var selectPath = EditorUtility.OpenFolderPanel("Select Build Path", "Assets", string.Empty);
             if (selectPath == string.Empty)
                 return;
+
             try { path = selectPath.Substring(selectPath.IndexOf("Assets")); }
             catch { path = selectPath; }
         }
@@ -84,14 +85,15 @@ namespace Developer.AssetBundleBuilder
                 try
                 {
                     BuildPipeline.BuildAssetBundles(path, options, platform);
-                    AssetDatabase.Refresh();
-
-                    SetEditorPreferences();
                 }
                 catch (Exception e)
                 {
                     ShowNotification(new GUIContent(e.Message));
+                    return;
                 }
+
+                AssetDatabase.Refresh();
+                SetEditorPreferences();
             }
             else
                 ShowNotification(new GUIContent("The output path does not exist."));
