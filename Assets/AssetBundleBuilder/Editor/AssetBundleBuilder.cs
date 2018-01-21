@@ -96,7 +96,7 @@ namespace Developer.AssetBundleBuilder
                 SetEditorPreferences();
             }
             else
-                ShowNotification(new GUIContent("The output path does not exist."));
+                ShowNotification(new GUIContent("The output path is not exist."));
         }
 
         private void SetEditorPreferences()
