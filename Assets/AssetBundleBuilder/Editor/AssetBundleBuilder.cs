@@ -1,5 +1,5 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  AssetBundleBuilder.cs
  *  Description  :  Config build options and build AssetBundles to
@@ -7,7 +7,7 @@
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  8/4/2017
+ *  Date         :  3/7/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -20,17 +20,17 @@ namespace Developer.AssetBundleBuilder
 {
     public class AssetBundleBuilder : EditorWindow
     {
-        #region Property and Field
+        #region Field and Property
         private static AssetBundleBuilder instance;
-        private const float buttonWidth = 80;
+        private const float ButtonWidth = 80;
 
         private string path = "Assets";
         private BuildAssetBundleOptions options = BuildAssetBundleOptions.None;
         private BuildTarget platform = BuildTarget.Android;
 
-        private const string pathKey = "AssetBundleBuildPath";
-        private const string optionsKey = "AssetBundleBuildOptions";
-        private const string platformKey = "AssetBundleTargetPlatform";
+        private const string PathKey = "AssetBundleBuildPath";
+        private const string OptionsKey = "AssetBundleBuildOptions";
+        private const string PlatformKey = "AssetBundleTargetPlatform";
         #endregion
 
         #region Private Method
@@ -52,7 +52,7 @@ namespace Developer.AssetBundleBuilder
 
             EditorGUILayout.BeginHorizontal();
             path = EditorGUILayout.TextField("Path", path);
-            if (GUILayout.Button("Browse", GUILayout.Width(buttonWidth)))
+            if (GUILayout.Button("Browse", GUILayout.Width(ButtonWidth)))
                 SelectBuildPath();
             EditorGUILayout.EndHorizontal();
 
@@ -61,7 +61,7 @@ namespace Developer.AssetBundleBuilder
 
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.Space();
-            if (GUILayout.Button("Build", GUILayout.Width(buttonWidth)))
+            if (GUILayout.Button("Build", GUILayout.Width(ButtonWidth)))
                 BuildAssetBundles();
             EditorGUILayout.EndHorizontal();
 
@@ -96,21 +96,21 @@ namespace Developer.AssetBundleBuilder
                 SetEditorPreferences();
             }
             else
-                ShowNotification(new GUIContent("The output path is not exist."));
+                ShowNotification(new GUIContent("The output path does not exist."));
         }
 
         private void SetEditorPreferences()
         {
-            EditorPrefs.SetString(pathKey, path);
-            EditorPrefs.SetInt(optionsKey, (int)options);
-            EditorPrefs.SetInt(platformKey, (int)platform);
+            EditorPrefs.SetString(PathKey, path);
+            EditorPrefs.SetInt(OptionsKey, (int)options);
+            EditorPrefs.SetInt(PlatformKey, (int)platform);
         }
 
         private void GetEditorPreferences()
         {
-            path = EditorPrefs.GetString(pathKey, path);
-            options = (BuildAssetBundleOptions)EditorPrefs.GetInt(optionsKey, (int)options);
-            platform = (BuildTarget)EditorPrefs.GetInt(platformKey, (int)platform);
+            path = EditorPrefs.GetString(PathKey, path);
+            options = (BuildAssetBundleOptions)EditorPrefs.GetInt(OptionsKey, (int)options);
+            platform = (BuildTarget)EditorPrefs.GetInt(PlatformKey, (int)platform);
         }
         #endregion
     }
