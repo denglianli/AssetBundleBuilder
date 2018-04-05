@@ -16,7 +16,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace Developer.AssetBundleBuilder
+namespace Mogoson.AssetBundleBuilder
 {
     public class AssetBundleBuilder : EditorWindow
     {
@@ -85,15 +85,13 @@ namespace Developer.AssetBundleBuilder
                 try
                 {
                     BuildPipeline.BuildAssetBundles(path, options, platform);
+                    AssetDatabase.Refresh();
+                    SetEditorPreferences();
                 }
                 catch (Exception e)
                 {
                     ShowNotification(new GUIContent(e.Message));
-                    return;
                 }
-
-                AssetDatabase.Refresh();
-                SetEditorPreferences();
             }
             else
                 ShowNotification(new GUIContent("The output path does not exist."));
